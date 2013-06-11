@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang='en' ng-app>
+  <head>
+    <title>Pet Payroll</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar">
+
+    </div>
+
+    <div class="container" ng-controller="RosterController">
+      <div class="row">
+        <div class="span12">
+          <h1>Pet Payroll</h1>
+
+          <table class="table table-striped">
+            <tr>
+              <th>First</th>
+              <th>Species</th>
+              <th>Salary</th>
+            </tr>
+            <tr ng-repeat="pet in pets">
+              <td>{{pet.firstname}}</td>
+              <td>{{pet.species}}</td>
+              <td><input ng-model="pet.salary"></td>
+            </tr>
+            <tr>
+              <th colspan="2">Total Payroll</th>
+              <th>{{payroll.total | currency }}</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script>
+    function RosterController($scope) {
+      $scope.payroll = {};
+
+      $scope.pets = [
+        { firstname: 'JoJo', species: 'Dog', salary: 50000 },
+        { firstname: 'Amber', species: 'Cat', salary: 70000 },
+        { firstname: 'Albert', species: 'Cat', salary: 100000 },
+        { firstname: 'Maggie', species: 'Cat', salary: 80000 },
+        { firstname: 'Yadier Molina', species: 'Cat', salary: 120000 },
+        { firstname: 'Hermie', species: 'Cat', salary: 55000 }
+      ];
+
+      $scope.$watch(function() {
+        var total = 0;
+        for (var i = 0; i < $scope.pets.length; i++) {
+          total = total + $scope.pets[i].salary * 1.0;
+        }
+        $scope.payroll.total = total;
+      });
+    }
+  </script>
+  </body>
+</html>
