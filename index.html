@@ -21,15 +21,28 @@
               <th>First</th>
               <th>Species</th>
               <th>Salary</th>
+              <th></th>
             </tr>
             <tr ng-repeat="pet in pets">
               <td>{{pet.firstname}}</td>
               <td>{{pet.species}}</td>
               <td><input ng-model="pet.salary"></td>
+              <td>
+                <a ng-click="deletePet($index)">Remove Pet</a>
+              </td>
             </tr>
+            <form ng-submit="addPet()">
+              <tr>
+              <td><input name="name" placeholder="Name" ng-model="newPet.name"></td>
+              <td><input name="species" placeholder="Species" ng-model="newPet.species"></td>
+              <td><input name="salary" placeholder="Salary" ng-model="newPet.salary"></td>
+              <td><button>Add Pet</button></td>
+              </tr>
+            </form>
             <tr>
               <th colspan="2">Total Payroll</th>
               <th>{{payroll.total | currency }}</th>
+              <th></th>
             </tr>
           </table>
         </div>
@@ -40,6 +53,7 @@
   <script>
     function RosterController($scope) {
       $scope.payroll = {};
+      $scope.newPet = {};
 
       $scope.pets = [
         { firstname: 'JoJo', species: 'Dog', salary: 50000 },
@@ -49,6 +63,15 @@
         { firstname: 'Yadier Molina', species: 'Cat', salary: 120000 },
         { firstname: 'Hermie', species: 'Cat', salary: 55000 }
       ];
+
+      $scope.addPet = function () {
+        $scope.pets.push({ firstname: $scope.newPet.name, species: $scope.newPet.species, salary: $scope.newPet.salary });
+        $scope.newPet = {};
+      };
+
+      $scope.deletePet = function(i) {
+        $scope.pets.splice(i,1);
+      };
 
       $scope.$watch(function() {
         var total = 0;

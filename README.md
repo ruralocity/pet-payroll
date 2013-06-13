@@ -4,8 +4,6 @@ A stupid little project for practicing AngularJS.
 
 ## TODO
 
-- Add a payee
-- Delete a payee
 - Edit a payee
 - Sort payees
 - Structure like an actual app
