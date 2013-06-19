@@ -16,14 +16,21 @@
         <div class="span12">
           <h1>Pet Payroll</h1>
 
+          Sort:
+          <select ng-model="orderProp">
+            <option value="firstname">Name</option>
+            <option value="species">Species</option>
+            <option value="salary">Salary</option>
+          </select>
+
           <table class="table table-striped">
             <tr>
-              <th>First</th>
+              <th>Name</th>
               <th>Species</th>
               <th>Salary</th>
               <th></th>
             </tr>
-            <tr ng-repeat="pet in pets">
+            <tr ng-repeat="pet in pets | orderBy:orderProp">
               <td>{{pet.firstname}}</td>
               <td>{{pet.species}}</td>
               <td><input ng-model="pet.salary"></td>
