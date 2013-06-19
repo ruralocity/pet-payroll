@@ -1,6 +1,7 @@
 function RosterController($scope) {
   $scope.payroll = {};
   $scope.newPet = {};
+  $scope.orderProp = 'firstname';
 
   $scope.pets = [
     { firstname: 'JoJo', species: 'Dog', salary: 50000 },
@@ -19,6 +20,10 @@ function RosterController($scope) {
   $scope.deletePet = function(i) {
     $scope.pets.splice(i,1);
   };
+
+  $scope.setOrder = function(name) {
+    $scope.orderProp = name;
+  }
 
   $scope.$watch(function() {
     var total = 0;
