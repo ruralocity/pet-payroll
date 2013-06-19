@@ -1,0 +1,8 @@
+[
+  { "firstname": "JoJo", "species": "Dog", "salary": 50000 },
+  { "firstname": "Amber", "species": "Cat", "salary": 70000 },
+  { "firstname": "Albert", "species": "Cat", "salary": 100000 },
+  { "firstname": "Maggie", "species": "Cat", "salary": 80000 },
+  { "firstname": "Yadier Molina", "species": "Cat", "salary": 120000 },
+  { "firstname": "Hermie", "species": "Cat", "salary": 55000 }
+]

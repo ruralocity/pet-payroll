@@ -1,16 +1,11 @@
-function RosterController($scope) {
+function RosterController($scope, $http) {
   $scope.payroll = {};
   $scope.newPet = {};
   $scope.orderProp = 'firstname';
 
-  $scope.pets = [
-    { firstname: 'JoJo', species: 'Dog', salary: 50000 },
-    { firstname: 'Amber', species: 'Cat', salary: 70000 },
-    { firstname: 'Albert', species: 'Cat', salary: 100000 },
-    { firstname: 'Maggie', species: 'Cat', salary: 80000 },
-    { firstname: 'Yadier Molina', species: 'Cat', salary: 120000 },
-    { firstname: 'Hermie', species: 'Cat', salary: 55000 }
-  ];
+  $http.get('./pets.json').success(function(data) {
+    $scope.pets = data;
+  });
 
   $scope.addPet = function () {
     $scope.pets.push({ firstname: $scope.newPet.name, species: $scope.newPet.species, salary: $scope.newPet.salary });
